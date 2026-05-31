@@ -66,6 +66,17 @@
             color: #4a3729;
         }
 
+        /* Увеличенный шрифт для АНКЕТА */
+        .anketa-title {
+            color: #ff0000;
+            font-family: 'Pangolin', cursive;
+            font-size: 33.6px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-weight: normal;
+            text-align: center;
+        }
+
         /* Красный цвет для "До торжества осталось" */
         .countdown-title {
             color: #ff0000;
@@ -90,7 +101,6 @@
             text-align: center;
             padding: 12px 5px;
         }
-        /* Черный цвет для цифр и текста отсчета */
         .countdown-number {
             font-size: 38px;
             font-weight: 400;
@@ -106,7 +116,7 @@
             font-weight: 400;
         }
 
-        /* Кнопка карты - черный шрифт, без обводки */
+        /* Кнопка карты - черная рамка, черный шрифт */
         .map-button-wrapper {
             text-align: center;
             margin: 20px 0;
@@ -115,17 +125,18 @@
         .btn-map {
             display: inline-block;
             background: transparent;
-            border: none;
+            border: 2px solid #000000;
             padding: 14px 32px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
             font-size: 18px;
             color: #000000;
             text-decoration: none;
+            border-radius: 0;
             cursor: pointer;
         }
         .btn-map:hover {
-            opacity: 0.7;
+            background: #f0f0f0;
         }
 
         .poll-container {
@@ -198,10 +209,10 @@
             background-color: #000000;
             box-shadow: inset 0 0 0 4px white;
         }
-        /* Кнопка отправки - черный шрифт, без обводки */
+        /* Кнопка отправки - черная рамка, черный шрифт */
         .btn-submit-poll {
             background: transparent;
-            border: none;
+            border: 2px solid #000000;
             padding: 12px 24px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
@@ -210,9 +221,10 @@
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
+            border-radius: 0;
         }
         .btn-submit-poll:hover {
-            opacity: 0.7;
+            background: #f0f0f0;
         }
         .poll-status {
             margin-top: 14px;
@@ -223,6 +235,7 @@
             .container { padding: 0; }
             .section { margin-bottom: 0; }
             .countdown-number { font-size: 28px; }
+            .anketa-title { font-size: 30px; }
         }
     </style>
 </head>
@@ -261,7 +274,7 @@
 
         <!-- Опрос -->
         <div class="section">
-            <h2 class="section-title" style="color: #ff0000;">АНКЕТА</h2>
+            <h2 class="anketa-title">АНКЕТА</h2>
             <div class="poll-container">
                 <div class="poll-question"><p>1. Ваше имя</p><input type="text" id="guestName" class="poll-input" placeholder="Напишите ваше имя"></div>
                 <div class="poll-question"><p>2. Подтверждение присутствия</p><div class="radio-group">
