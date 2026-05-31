@@ -14,12 +14,12 @@
         }
 
         body {
-    background-image: url('https://2.downloader.disk.yandex.ru/preview/4955c0eb7f07d442105f709ed82206f9edca62576f2ace199969a899379b97b9/inf/CymdYVmWoNdPilgafGxvsqXtr2t5Q7B4OLwZGFISNcu2ewW6UMZ2kUzGBxcDA72gonRrkk1Hlfg0sxA0jgTPCQ%3D%3D?uid=657074428&filename=Фон.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=657074428&tknv=v3&is_direct_zip_experiment=1&size=1920x1020');
-    background-size: cover;
-    background-attachment: fixed;
-}
+            background: #fff9f5;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c2b28;
+            line-height: 1.4;
+        }
 
-        /* Контейнер для основного контента */
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -27,7 +27,7 @@
             padding: 0 20px 60px 20px;
         }
 
-        /* Универсальные блоки с отступами и анимацией появления */
+        /* Универсальные блоки с анимацией появления */
         .section {
             margin-bottom: 48px;
             opacity: 0;
@@ -67,7 +67,7 @@
             border-radius: 0;
         }
 
-        /* Заголовки: Pangolin */
+        /* Заголовки */
         h2, .section-title {
             font-family: 'Pangolin', cursive;
             font-size: 28px;
@@ -132,7 +132,7 @@
             color: #fff;
         }
 
-        /* Опрос: стиль без рамок, чекбоксы в виде кружков */
+        /* Опрос */
         .poll-container {
             margin: 20px 0;
         }
@@ -262,15 +262,90 @@
 </head>
 <body>
     <div class="container">
-        <!-- 1. Место под изображение - там будет приглашение -->
-        <div class="section" id="section-invite-img">
+        
+        <!-- ===== БЛОК 1: 8 изображений (photo1.jpg - photo8.jpg) ===== -->
+        <div class="section" id="img-1">
             <div class="image-placeholder">
-                <div class="placeholder-note">Ваше приглашение (изображение)</div>
+                <img src="images/photo1.jpg" alt="Фото 1" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-2">
+            <div class="image-placeholder">
+                <img src="images/photo2.jpg" alt="Фото 2" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-3">
+            <div class="image-placeholder">
+                <img src="images/photo3.jpg" alt="Фото 3" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-4">
+            <div class="image-placeholder">
+                <img src="images/photo4.jpg" alt="Фото 4" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-5">
+            <div class="image-placeholder">
+                <img src="images/photo5.jpg" alt="Фото 5" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-6">
+            <div class="image-placeholder">
+                <img src="images/photo6.jpg" alt="Фото 6" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-7">
+            <div class="image-placeholder">
+                <img src="images/photo7.jpg" alt="Фото 7" style="width:100%; display:block;">
+            </div>
+        </div>
+        
+        <div class="section" id="img-8">
+            <div class="image-placeholder">
+                <img src="images/photo8.jpg" alt="Фото 8" style="width:100%; display:block;">
             </div>
         </div>
 
-        <!-- 2. Отсчет времени до даты 26.09.2026 -->
-        <div class="section" id="section-countdown">
+        <!-- ===== БЛОК 2: Кнопка "Открыть карту" ===== -->
+        <div class="section" id="map-button-block">
+            <div class="map-button-wrapper">
+                <button class="btn-map" id="openMapBtn">Открыть карту</button>
+            </div>
+        </div>
+
+        <!-- ===== БЛОК 3: 4 изображения (здесь пока заглушки, замените на свои) ===== -->
+        <div class="section" id="img-9">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение 9 (замените на свою картинку)</div>
+            </div>
+        </div>
+        
+        <div class="section" id="img-10">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение 10 (замените на свою картинку)</div>
+            </div>
+        </div>
+        
+        <div class="section" id="img-11">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение 11 (замените на свою картинку)</div>
+            </div>
+        </div>
+        
+        <div class="section" id="img-12">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение 12 (замените на свою картинку)</div>
+            </div>
+        </div>
+
+        <!-- ===== БЛОК 4: Тайминг / Отсчет времени ===== -->
+        <div class="section" id="countdown-block">
             <h2 class="section-title">До торжества осталось</h2>
             <div class="countdown-wrapper">
                 <div class="countdown-item">
@@ -292,40 +367,8 @@
             </div>
         </div>
 
-        <!-- 3. Место под изображение - там будут фотки -->
-        <div class="section" id="section-photos">
-            <div class="image-placeholder">
-                <div class="placeholder-note">Здесь будут ваши фотографии</div>
-            </div>
-        </div>
-
-        <!-- 4. Место под изображение - там будет дата и место (весь текст будет на картинке) -->
-        <div class="section" id="section-venue-img">
-            <div class="image-placeholder">
-                <div class="placeholder-note">Изображение с датой и местом</div>
-            </div>
-            <!-- Кнопка открыть карту находится под этим блоком (как и требовалось: сначала картинка с датой/местом, затем кнопка) -->
-            <div class="map-button-wrapper">
-                <button class="btn-map" id="openMapBtn">Открыть карту</button>
-            </div>
-        </div>
-
-        <!-- 5. Место под изображение - там будет программа дня -->
-        <div class="section" id="section-program-img">
-            <div class="image-placeholder">
-                <div class="placeholder-note">Изображение: программа дня</div>
-            </div>
-        </div>
-
-        <!-- 6. Место под изображение - там будет дресс-код -->
-        <div class="section" id="section-dresscode-img">
-            <div class="image-placeholder">
-                <div class="placeholder-note">Изображение: дресс-код</div>
-            </div>
-        </div>
-
-        <!-- 7. Опрос (имя, подтверждение, алкоголь) -->
-        <div class="section" id="section-poll">
+        <!-- ===== БЛОК 5: Опрос ===== -->
+        <div class="section" id="poll-block">
             <h2 class="section-title">Пожалуйста, ответьте на вопросы</h2>
             <div class="poll-container">
                 <!-- 1. Ваше имя -->
@@ -333,7 +376,7 @@
                     <p>1. Ваше имя</p>
                     <input type="text" id="guestName" class="poll-input" placeholder="Напишите ваше имя" autocomplete="off">
                 </div>
-                <!-- 2. Подтверждение присутствия (радио) -->
+                <!-- 2. Подтверждение присутствия -->
                 <div class="poll-question">
                     <p>2. Подтверждение присутствия</p>
                     <div class="radio-group">
@@ -348,7 +391,7 @@
                         </label>
                     </div>
                 </div>
-                <!-- 3. Алкоголь (можно несколько) -->
+                <!-- 3. Алкоголь -->
                 <div class="poll-question">
                     <p>3. Какой алкоголь предпочитаете? (можно несколько)</p>
                     <div class="poll-options">
@@ -366,17 +409,18 @@
             </div>
         </div>
 
-        <!-- 8. В конце место под изображение - там будет Ждем вас -->
-        <div class="section" id="section-final-img">
+        <!-- ===== БЛОК 6: Последнее 1 изображение ===== -->
+        <div class="section" id="img-final">
             <div class="image-placeholder">
-                <div class="placeholder-note">Изображение: "Ждем вас!"</div>
+                <div class="placeholder-note">Последнее изображение (замените на свою картинку)</div>
             </div>
         </div>
+        
         <div class="footer-note">С нетерпением ждём встречи!</div>
     </div>
 
-    <!-- Фоновая музыка (автовоспроизведение с попыткой) -->
-    <audio id="bgMusic" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" style="display: none;"></audio>
+    <!-- Фоновая музыка -->
+   <audio id="bgMusic" loop preload="auto" src="music/JElbrus_Dzhanmirzoev_-_Brodyaga_53297988.mp3" style="display: none;"></audio>
 
     <script>
         // === ОТСЧЕТ ВРЕМЕНИ до 26 сентября 2026 года (16:00)
@@ -403,14 +447,14 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // === Кнопка открыть карту (Яндекс.Карты)
+        // === Кнопка открыть карту
         const mapBtn = document.getElementById('openMapBtn');
         mapBtn.addEventListener('click', () => {
             const address = encodeURIComponent('Уфа, проспект Октября 79/1, Pravdahall');
             window.open(`https://yandex.ru/maps/?text=${address}&mode=search`, '_blank');
         });
 
-        // === Отправка опроса на почту через FormSubmit
+        // === Отправка опроса
         const submitBtn = document.getElementById('submitPollBtn');
         const pollStatusDiv = document.getElementById('pollStatus');
         
@@ -460,7 +504,7 @@
         }
         submitBtn.addEventListener('click', sendPollData);
 
-        // === Анимация появления блоков при скролле (Intersection Observer)
+        // === Анимация появления блоков
         const sections = document.querySelectorAll('.section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -474,12 +518,12 @@
         }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
         sections.forEach(sec => observer.observe(sec));
 
-        // === Музыка с автоматическим включением (с обработчиком на первое касание)
+        // === Музыка с автовоспроизведением
         const music = document.getElementById('bgMusic');
         music.volume = 0.3;
         function enableAudio() {
             if (music.paused) {
-                music.play().catch(e => console.log("autoplay blocked, but will start on interaction"));
+                music.play().catch(e => console.log("autoplay blocked"));
             }
             document.removeEventListener('click', enableAudio);
             document.removeEventListener('touchstart', enableAudio);
