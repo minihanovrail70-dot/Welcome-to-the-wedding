@@ -238,11 +238,12 @@
         <!-- Кнопка карты -->
         <div class="section"><div class="map-button-wrapper"><button class="btn-map" id="openMapBtn">Открыть карту</button></div></div>
 
-        <!-- 4 изображения (заглушки) -->
-        <div class="section"><div class="image-placeholder"><div class="placeholder-note">Изображение 9</div></div></div>
-        <div class="section"><div class="image-placeholder"><div class="placeholder-note">Изображение 10</div></div></div>
-        <div class="section"><div class="image-placeholder"><div class="placeholder-note">Изображение 11</div></div></div>
-        <div class="section"><div class="image-placeholder"><div class="placeholder-note">Изображение 12</div></div></div>
+        <!-- 5 изображений photo 9.png до photo 13.png -->
+        <div class="section"><div class="image-placeholder"><img src="images/photo 9.png" alt="Фото 9" style="width:100%"></div></div>
+        <div class="section"><div class="image-placeholder"><img src="images/photo 10.png" alt="Фото 10" style="width:100%"></div></div>
+        <div class="section"><div class="image-placeholder"><img src="images/photo 11.png" alt="Фото 11" style="width:100%"></div></div>
+        <div class="section"><div class="image-placeholder"><img src="images/photo 12.png" alt="Фото 12" style="width:100%"></div></div>
+        <div class="section"><div class="image-placeholder"><img src="images/photo 13.png" alt="Фото 13" style="width:100%"></div></div>
 
         <!-- Таймер -->
         <div class="section">
@@ -278,9 +279,6 @@
                 <div class="poll-status" id="pollStatus"></div>
             </div>
         </div>
-
-        <!-- Последнее изображение -->
-        <div class="section"><div class="image-placeholder"><div class="placeholder-note">Последнее изображение</div></div></div>
         
         <div class="footer-note">С нетерпением ждём встречи!</div>
     </div>
@@ -311,9 +309,9 @@
             window.open('https://yandex.ru/maps/?text=Уфа%20проспект%20Октября%2079/1%20Pravdahall', '_blank');
         });
 
-        // НАСТРОЙКИ TELEGRAM - ЗДЕСЬ НУЖНО ЗАМЕНИТЬ CHAT_ID
+        // НАСТРОЙКИ TELEGRAM
         const TELEGRAM_TOKEN = '8987869878:AAFfutu4fXOzdSd-Vt-qVK3I_ZTcnTBMlls';
-        const CHAT_ID = '825797973';  // ← ВСТАВЬТЕ СЮДА ID ОТ @userinfobot
+        const CHAT_ID = '825797973';
 
         document.getElementById('submitPollBtn').addEventListener('click', async () => {
             const name = document.getElementById('guestName').value.trim();
@@ -325,7 +323,6 @@
             const attendance = document.querySelector('input[name="attendance"]:checked')?.value || 'Не указано';
             const alcohol = [...document.querySelectorAll('.checkbox-circle input:checked')].map(c => c.value).join(', ') || 'Не выбрано';
             
-            // Формируем сообщение для Telegram
             const message = `📨 НОВЫЙ ОТВЕТ НА ПРИГЛАШЕНИЕ%0A%0A👤 Имя: ${name}%0A✅ Присутствие: ${attendance}%0A🍷 Алкоголь: ${alcohol}`;
             
             try {
