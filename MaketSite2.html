@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Свадебное приглашение</title>
+    <!-- Шрифты: Pangolin для заголовков, Montserrat для остального -->
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    background-image: url('https://2.downloader.disk.yandex.ru/preview/4955c0eb7f07d442105f709ed82206f9edca62576f2ace199969a899379b97b9/inf/CymdYVmWoNdPilgafGxvsqXtr2t5Q7B4OLwZGFISNcu2ewW6UMZ2kUzGBxcDA72gonRrkk1Hlfg0sxA0jgTPCQ%3D%3D?uid=657074428&filename=Фон.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=657074428&tknv=v3&is_direct_zip_experiment=1&size=1920x1020');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+        /* Контейнер для основного контента */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: transparent;
+            padding: 0 20px 60px 20px;
+        }
+
+        /* Универсальные блоки с отступами и анимацией появления */
+        .section {
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Место под изображение */
+        .image-placeholder {
+            width: 100%;
+            background-color: transparent;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .image-placeholder img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .placeholder-note {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #aaa;
+            text-align: center;
+            background: #f0efed;
+            padding: 40px 20px;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        /* Заголовки: Pangolin */
+        h2, .section-title {
+            font-family: 'Pangolin', cursive;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #4a3729;
+            text-align: center;
+        }
+
+        /* Таймер (отсчет времени) */
+        .countdown-wrapper {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .countdown-item {
+            flex: 1;
+            background: transparent;
+            text-align: center;
+            padding: 12px 5px;
+            font-family: 'Montserrat', monospace;
+        }
+        .countdown-number {
+            font-size: 38px;
+            font-weight: 700;
+            color: #bc8f6b;
+            line-height: 1;
+        }
+        .countdown-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            color: #8b6b50;
+        }
+
+        /* Кнопка "Открыть карту" - рамка только для этой кнопки */
+        .map-button-wrapper {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+        .btn-map {
+            display: inline-block;
+            background: #fff;
+            border: 2px solid #bc8f6b;
+            padding: 14px 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #bc8f6b;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.25s ease;
+            cursor: pointer;
+            box-shadow: none;
+        }
+        .btn-map:hover {
+            background: #bc8f6b;
+            color: #fff;
+        }
+
+        /* Опрос: стиль без рамок, чекбоксы в виде кружков */
+        .poll-container {
+            margin: 20px 0;
+        }
+        .poll-question {
+            margin-bottom: 24px;
+        }
+        .poll-question p {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .checkbox-circle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .checkbox-circle input {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #bc8f6b;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.1s;
+            margin: 0;
+        }
+        .checkbox-circle input:checked {
+            background-color: #bc8f6b;
+            border-color: #bc8f6b;
+            box-shadow: inset 0 0 0 4px white;
+        }
+        .poll-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            border: 1px solid #ddd7d0;
+            background: white;
+            border-radius: 40px;
+            margin-top: 8px;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .radio-circle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .radio-circle input {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #bc8f6b;
+            border-radius: 50%;
+            background-color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .radio-circle input:checked {
+            border-color: #bc8f6b;
+            background-color: #bc8f6b;
+            box-shadow: inset 0 0 0 4px white;
+        }
+        .btn-submit-poll {
+            background: white;
+            border: 2px solid #bc8f6b;
+            padding: 12px 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: #bc8f6b;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.2s;
+            width: 100%;
+        }
+        .btn-submit-poll:hover {
+            background: #bc8f6b;
+            color: white;
+        }
+        .poll-status {
+            margin-top: 14px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #b29578;
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                padding: 0 16px 50px 16px;
+            }
+            h2, .section-title {
+                font-size: 26px;
+            }
+            .countdown-number {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. Место под изображение - там будет приглашение -->
+        <div class="section" id="section-invite-img">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Ваше приглашение (изображение)</div>
+            </div>
+        </div>
+
+        <!-- 2. Отсчет времени до даты 26.09.2026 -->
+        <div class="section" id="section-countdown">
+            <h2 class="section-title">До торжества осталось</h2>
+            <div class="countdown-wrapper">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Дней</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Часов</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Минут</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Секунд</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Место под изображение - там будут фотки -->
+        <div class="section" id="section-photos">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Здесь будут ваши фотографии</div>
+            </div>
+        </div>
+
+        <!-- 4. Место под изображение - там будет дата и место (весь текст будет на картинке) -->
+        <div class="section" id="section-venue-img">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение с датой и местом</div>
+            </div>
+            <!-- Кнопка открыть карту находится под этим блоком (как и требовалось: сначала картинка с датой/местом, затем кнопка) -->
+            <div class="map-button-wrapper">
+                <button class="btn-map" id="openMapBtn">Открыть карту</button>
+            </div>
+        </div>
+
+        <!-- 5. Место под изображение - там будет программа дня -->
+        <div class="section" id="section-program-img">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение: программа дня</div>
+            </div>
+        </div>
+
+        <!-- 6. Место под изображение - там будет дресс-код -->
+        <div class="section" id="section-dresscode-img">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение: дресс-код</div>
+            </div>
+        </div>
+
+        <!-- 7. Опрос (имя, подтверждение, алкоголь) -->
+        <div class="section" id="section-poll">
+            <h2 class="section-title">Пожалуйста, ответьте на вопросы</h2>
+            <div class="poll-container">
+                <!-- 1. Ваше имя -->
+                <div class="poll-question">
+                    <p>1. Ваше имя</p>
+                    <input type="text" id="guestName" class="poll-input" placeholder="Напишите ваше имя" autocomplete="off">
+                </div>
+                <!-- 2. Подтверждение присутствия (радио) -->
+                <div class="poll-question">
+                    <p>2. Подтверждение присутствия</p>
+                    <div class="radio-group">
+                        <label class="radio-circle">
+                            <input type="radio" name="attendance" value="Буду с радостью"> <span>Буду с радостью</span>
+                        </label>
+                        <label class="radio-circle">
+                            <input type="radio" name="attendance" value="К сожалению, не смогу"> <span>К сожалению, не смогу</span>
+                        </label>
+                        <label class="radio-circle">
+                            <input type="radio" name="attendance" value="Возможно, уточню позже"> <span>Возможно, уточню позже</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- 3. Алкоголь (можно несколько) -->
+                <div class="poll-question">
+                    <p>3. Какой алкоголь предпочитаете? (можно несколько)</p>
+                    <div class="poll-options">
+                        <label class="checkbox-circle"><input type="checkbox" value="Вино красное"> <span>Вино красное</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Вино белое"> <span>Вино белое</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Шампанское"> <span>Шампанское</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Коньяк"> <span>Коньяк</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Виски"> <span>Виски</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Водка"> <span>Водка</span></label>
+                        <label class="checkbox-circle"><input type="checkbox" value="Самогон"> <span>Самогон</span></label>
+                    </div>
+                </div>
+                <button class="btn-submit-poll" id="submitPollBtn">Отправить ответ</button>
+                <div class="poll-status" id="pollStatus"></div>
+            </div>
+        </div>
+
+        <!-- 8. В конце место под изображение - там будет Ждем вас -->
+        <div class="section" id="section-final-img">
+            <div class="image-placeholder">
+                <div class="placeholder-note">Изображение: "Ждем вас!"</div>
+            </div>
+        </div>
+        <div class="footer-note">С нетерпением ждём встречи!</div>
+    </div>
+
+    <!-- Фоновая музыка (автовоспроизведение с попыткой) -->
+    <audio id="bgMusic" loop preload="auto" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" style="display: none;"></audio>
+
+    <script>
+        // === ОТСЧЕТ ВРЕМЕНИ до 26 сентября 2026 года (16:00)
+        const targetDate = new Date(2026, 8, 26, 16, 0, 0);
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+            if (diff <= 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (86400000)) / (3600000));
+            const minutes = Math.floor((diff % 3600000) / 60000);
+            const seconds = Math.floor((diff % 60000) / 1000);
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // === Кнопка открыть карту (Яндекс.Карты)
+        const mapBtn = document.getElementById('openMapBtn');
+        mapBtn.addEventListener('click', () => {
+            const address = encodeURIComponent('Уфа, проспект Октября 79/1, Pravdahall');
+            window.open(`https://yandex.ru/maps/?text=${address}&mode=search`, '_blank');
+        });
+
+        // === Отправка опроса на почту через FormSubmit
+        const submitBtn = document.getElementById('submitPollBtn');
+        const pollStatusDiv = document.getElementById('pollStatus');
+        
+        async function sendPollData() {
+            const guestName = document.getElementById('guestName').value.trim();
+            if (!guestName) {
+                pollStatusDiv.innerText = 'Пожалуйста, укажите ваше имя.';
+                pollStatusDiv.style.color = '#b35f3b';
+                return;
+            }
+            const attendanceRadio = document.querySelector('input[name="attendance"]:checked');
+            const attendanceValue = attendanceRadio ? attendanceRadio.value : 'Не указано';
+            
+            const alcoholChecks = document.querySelectorAll('.checkbox-circle input[type="checkbox"]:checked');
+            let alcoholList = [];
+            alcoholChecks.forEach(cb => { alcoholList.push(cb.value); });
+            const alcoholPreference = alcoholList.length ? alcoholList.join(', ') : 'Не выбрано';
+            
+            const message = `Имя: ${guestName}\nПодтверждение: ${attendanceValue}\nПредпочитаемый алкоголь: ${alcoholPreference}`;
+            const formData = new FormData();
+            formData.append('name', guestName);
+            formData.append('_subject', 'Новый ответ на свадебное приглашение');
+            formData.append('message', message);
+            formData.append('_captcha', 'false');
+            
+            try {
+                pollStatusDiv.innerText = 'Отправка...';
+                pollStatusDiv.style.color = '#6f5e4e';
+                const response = await fetch('https://formsubmit.co/ajax/minihanovrail70@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+                if (response.ok) {
+                    pollStatusDiv.innerText = 'Спасибо! Ваш ответ отправлен.';
+                    pollStatusDiv.style.color = '#4c7a5c';
+                    document.getElementById('guestName').value = '';
+                    document.querySelectorAll('input[name="attendance"]').forEach(r => r.checked = false);
+                    document.querySelectorAll('.checkbox-circle input').forEach(c => c.checked = false);
+                } else {
+                    pollStatusDiv.innerText = 'Ошибка отправки, попробуйте позже.';
+                    pollStatusDiv.style.color = '#b35f3b';
+                }
+            } catch(e) {
+                pollStatusDiv.innerText = 'Не удалось отправить. Проверьте соединение.';
+                pollStatusDiv.style.color = '#b35f3b';
+            }
+        }
+        submitBtn.addEventListener('click', sendPollData);
+
+        // === Анимация появления блоков при скролле (Intersection Observer)
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, 200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+        sections.forEach(sec => observer.observe(sec));
+
+        // === Музыка с автоматическим включением (с обработчиком на первое касание)
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.3;
+        function enableAudio() {
+            if (music.paused) {
+                music.play().catch(e => console.log("autoplay blocked, but will start on interaction"));
+            }
+            document.removeEventListener('click', enableAudio);
+            document.removeEventListener('touchstart', enableAudio);
+        }
+        music.play().catch(() => {
+            document.addEventListener('click', enableAudio);
+            document.addEventListener('touchstart', enableAudio);
+        });
+    </script>
+</body>
+</html>
