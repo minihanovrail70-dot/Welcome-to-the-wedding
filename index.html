@@ -55,15 +55,6 @@
             height: auto;
             display: block;
         }
-        .placeholder-note {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: #aaa;
-            text-align: center;
-            background: #f0efed;
-            padding: 40px 20px;
-            width: 100%;
-        }
 
         h2, .section-title {
             font-family: 'Pangolin', cursive;
@@ -73,6 +64,17 @@
             font-weight: normal;
             text-align: center;
             color: #4a3729;
+        }
+
+        /* Красный цвет для "До торжества осталось" */
+        .countdown-title {
+            color: #ff0000;
+            font-family: 'Pangolin', cursive;
+            font-size: 28px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            font-weight: normal;
+            text-align: center;
         }
 
         .countdown-wrapper {
@@ -88,18 +90,23 @@
             text-align: center;
             padding: 12px 5px;
         }
+        /* Черный цвет для цифр и текста отсчета */
         .countdown-number {
             font-size: 38px;
-            font-weight: 700;
-            color: #bc8f6b;
+            font-weight: 400;
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
         }
         .countdown-label {
             font-size: 14px;
             text-transform: uppercase;
             margin-top: 8px;
-            color: #8b6b50;
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         }
 
+        /* Кнопка карты - черный шрифт, без обводки */
         .map-button-wrapper {
             text-align: center;
             margin: 20px 0;
@@ -107,20 +114,18 @@
         }
         .btn-map {
             display: inline-block;
-            background: #fff;
-            border: 2px solid #bc8f6b;
+            background: transparent;
+            border: none;
             padding: 14px 32px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 400;
             font-size: 18px;
-            color: #bc8f6b;
+            color: #000000;
             text-decoration: none;
-            border-radius: 50px;
             cursor: pointer;
         }
         .btn-map:hover {
-            background: #bc8f6b;
-            color: #fff;
+            opacity: 0.7;
         }
 
         .poll-container {
@@ -134,6 +139,7 @@
             font-weight: 600;
             margin-bottom: 12px;
             font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
         }
         .poll-options {
             display: flex;
@@ -150,13 +156,13 @@
             appearance: none;
             width: 22px;
             height: 22px;
-            border: 2px solid #bc8f6b;
+            border: 2px solid #000000;
             border-radius: 50%;
             background: white;
             cursor: pointer;
         }
         .checkbox-circle input:checked {
-            background-color: #bc8f6b;
+            background-color: #000000;
             box-shadow: inset 0 0 0 4px white;
         }
         .poll-input {
@@ -183,31 +189,30 @@
             appearance: none;
             width: 22px;
             height: 22px;
-            border: 2px solid #bc8f6b;
+            border: 2px solid #000000;
             border-radius: 50%;
             background: white;
             cursor: pointer;
         }
         .radio-circle input:checked {
-            background-color: #bc8f6b;
+            background-color: #000000;
             box-shadow: inset 0 0 0 4px white;
         }
+        /* Кнопка отправки - черный шрифт, без обводки */
         .btn-submit-poll {
-            background: white;
-            border: 2px solid #bc8f6b;
+            background: transparent;
+            border: none;
             padding: 12px 24px;
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 400;
             font-size: 16px;
-            color: #bc8f6b;
-            border-radius: 50px;
+            color: #000000;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
         }
         .btn-submit-poll:hover {
-            background: #bc8f6b;
-            color: white;
+            opacity: 0.7;
         }
         .poll-status {
             margin-top: 14px;
@@ -217,7 +222,6 @@
         @media (max-width: 550px) {
             .container { padding: 0; }
             .section { margin-bottom: 0; }
-            h2, .section-title { font-size: 26px; }
             .countdown-number { font-size: 28px; }
         }
     </style>
@@ -246,7 +250,7 @@
 
         <!-- Таймер -->
         <div class="section">
-            <h2 class="section-title">До торжества осталось</h2>
+            <h2 class="countdown-title">До торжества осталось</h2>
             <div class="countdown-wrapper">
                 <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">Дней</div></div>
                 <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">Часов</div></div>
@@ -257,20 +261,18 @@
 
         <!-- Опрос -->
         <div class="section">
-            <h2 class="section-title">Пожалуйста, ответьте на вопросы</h2>
+            <h2 class="section-title" style="color: #ff0000;">АНКЕТА</h2>
             <div class="poll-container">
                 <div class="poll-question"><p>1. Ваше имя</p><input type="text" id="guestName" class="poll-input" placeholder="Напишите ваше имя"></div>
                 <div class="poll-question"><p>2. Подтверждение присутствия</p><div class="radio-group">
-                    <label class="radio-circle"><input type="radio" name="attendance" value="Буду с радостью"> <span>Буду с радостью</span></label>
-                    <label class="radio-circle"><input type="radio" name="attendance" value="К сожалению, не смогу"> <span>К сожалению, не смогу</span></label>
-                    <label class="radio-circle"><input type="radio" name="attendance" value="Возможно, уточню позже"> <span>Возможно, уточню позже</span></label>
+                    <label class="radio-circle"><input type="radio" name="attendance" value="Да, с удовольствием"> <span>Да, с удовольствием</span></label>
+                    <label class="radio-circle"><input type="radio" name="attendance" value="Нет, не смогу"> <span>Нет, не смогу</span></label>
+                    <label class="radio-circle"><input type="radio" name="attendance" value="Дам ответ позже"> <span>Дам ответ позже</span></label>
                 </div></div>
                 <div class="poll-question"><p>3. Какой алкоголь предпочитаете? (можно несколько)</p><div class="poll-options">
                     <label class="checkbox-circle"><input type="checkbox" value="Вино красное"> Вино красное</label>
                     <label class="checkbox-circle"><input type="checkbox" value="Вино белое"> Вино белое</label>
                     <label class="checkbox-circle"><input type="checkbox" value="Шампанское"> Шампанское</label>
-                    <label class="checkbox-circle"><input type="checkbox" value="Коньяк"> Коньяк</label>
-                    <label class="checkbox-circle"><input type="checkbox" value="Виски"> Виски</label>
                     <label class="checkbox-circle"><input type="checkbox" value="Водка"> Водка</label>
                     <label class="checkbox-circle"><input type="checkbox" value="Самогон"> Самогон</label>
                 </div></div>
