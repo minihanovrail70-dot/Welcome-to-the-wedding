@@ -139,17 +139,16 @@
             background: #f5f5f5;
         }
 
-        /* Стили для Google Формы */
-        .google-form-wrapper {
+        /* Стили для Яндекс Формы */
+        .ya-form-wrapper {
             margin: 20px 0;
             padding: 0 20px;
         }
-        .google-form-wrapper iframe {
+        .ya-form-wrapper iframe {
             width: 100%;
-            min-height: 700px;
+            min-height: 600px;
             border: none;
             border-radius: 0;
-            display: block;
         }
 
         @media (max-width: 550px) {
@@ -157,7 +156,7 @@
             .section { margin-bottom: 0; }
             .countdown-number { font-size: 28px; }
             .anketa-title { font-size: 30px; }
-            .google-form-wrapper iframe { min-height: 800px; }
+            .ya-form-wrapper iframe { min-height: 700px; }
         }
     </style>
 </head>
@@ -194,17 +193,20 @@
             </div>
         </div>
 
-        <!-- Опрос (Google Формы) -->
+        <!-- Опрос (Яндекс Формы) -->
         <div class="section">
             <h2 class="anketa-title">АНКЕТА</h2>
-            <div class="google-form-wrapper">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSelRKgiWiWtDd1_2iBw15RG0B-fdTKN4Yh6wqDCsmii_EiTPQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+            <div class="ya-form-wrapper">
+                <iframe src="https://forms.yandex.ru/u/6a414076505690e9970feab2?iframe=1" frameborder="0" name="ya-form-6a414076505690e9970feab2"></iframe>
             </div>
         </div>
 
         <!-- 13 изображение в конце (photo 13.png) -->
         <div class="section"><div class="image-placeholder"><img src="images/photo 13.png" alt="Фото 13"></div></div>
     </div>
+
+    <!-- Скрипт Яндекс Формы -->
+    <script src="https://forms.yandex.ru/_static/embed.js"></script>
 
     <script>
         // Время до 26 сентября 2026 15:00 по Уфимскому времени (UTC+5)
